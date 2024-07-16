@@ -1,0 +1,71 @@
+<h1 class="heading">TIC TAC TOE!!</h1>
+
+<div class="playerpanel">
+    
+
+    <div class="player">
+        <input type="text" class="player-input" [(ngModel)]="playerA.name" [readonly]="!playerA.isEditing" />
+        <div> 
+        <button class="edit-button" (click)="updatePlayerName('A')" >
+            {{playerA.isEditing?'Save':'Edit'}}</button>
+        <button class="edit-button">X</button>
+        <button *ngIf="playerA.isTurn" class="btn btn-success btn-circle btn-sm">TURN</button>
+        </div>
+    </div>
+    <div><button (click)="restartbuttonclick()">Restart</button></div>
+    <div class="player">
+        <input type="text" class="player-input" value="PlayerB" [(ngModel)]="playerB.name" [readonly]="!playerB.isEditing"/>
+        <div>
+        <button class="edit-button" (click)="updatePlayerName('B')" >{{playerB.isEditing?'Save':'Edit'}}</button>
+        <button class="edit-button">O</button>
+        <button *ngIf="playerB.isTurn"  class="btn btn-success btn-circle btn-sm">TURN</button>
+       </div>
+    </div>
+</div>
+<div>
+    <h4 class="gameStatus" *ngIf="gameStatus!=='gameActive'" >{{gameStatus}}</h4>
+</div>
+<div class="game">
+    <div class="d-flex flex-column">
+    <div class="d-flex">
+        <span class="square" (click)="makeMove(1)" 
+        [ngClass]="{'squarematch' : wingridcomb.includes(1)}"  > {{cells[1]}}  </span>
+
+        <span class="square" (click)="makeMove(2)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(2)}">{{cells[2]}}</span>
+
+        <span class="square" (click)="makeMove(3)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(3)}">{{cells[3]}}</span>
+
+    </div>
+    <div class="d-flex">
+        <span class="square" (click)="makeMove(4)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(4)}">{{cells[4]}}</span>
+
+        <span class="square" (click)="makeMove(5)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(5)}">{{cells[5]}}</span>
+
+        <span class="square" (click)="makeMove(6)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(6)}">{{cells[6]}}</span>
+
+    </div>
+    <div class="d-flex">
+        <span class="square" (click)="makeMove(7)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(7)}">{{cells[7]}}</span>
+
+        <span class="square"(click)="makeMove(8)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(8)}">{{cells[8]}}</span>
+
+        <span class="square" (click)="makeMove(9)"
+        [ngClass]="{'squarematch' : wingridcomb.includes(9)}">{{cells[9]}}</span>
+    </div>
+    </div>
+</div>
+
+<div class="movesorder">
+   
+
+    <ul >
+        <li  *ngFor="let move of allMoves" >{{move}}</li>
+    </ul>
+</div>
